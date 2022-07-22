@@ -12,7 +12,7 @@ class TaskForm extends StatefulWidget {
 
 class _TaskFormState extends State<TaskForm> {
   final _formKey = GlobalKey<FormState>();
-  late Map<String, dynamic> _formData;
+  final _formData = <String, dynamic>{};
 
   String? _priority = 'Medium';
 
