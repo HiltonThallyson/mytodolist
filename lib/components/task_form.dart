@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:my_todo_app/models/task_model.dart';
 
@@ -21,8 +23,10 @@ class _TaskFormState extends State<TaskForm> {
   _submitTask() {
     _formData['title'] = _titleController.text;
     _formData['priority'] = _priority;
-    final newTask =
-        Task(title: _formData['title'], priority: _formData['priority']);
+    final newTask = Task(
+        id: Random().nextDouble().toString(),
+        title: _formData['title'],
+        priority: _formData['priority']);
 
     widget._onSubmit(newTask);
     Navigator.of(context).pop(context);

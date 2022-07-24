@@ -14,30 +14,26 @@ class MyApp extends StatelessWidget {
       title: 'TODO list',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-            onPrimary: Colors.black,
-            primary: Colors.grey[600],
-            alignment: Alignment.center,
-            fixedSize: const Size(120, 50),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          )),
           drawerTheme: const DrawerThemeData(backgroundColor: secondaryColor),
           scaffoldBackgroundColor: primaryColor,
+          iconTheme: const IconThemeData()
+              .copyWith(color: Colors.white, size: 25, opacity: 1),
           appBarTheme: const AppBarTheme(
             centerTitle: true,
             backgroundColor: Colors.transparent,
             elevation: 0,
             titleTextStyle: TextStyle(
-                color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
-            iconTheme: IconThemeData(color: Colors.black),
+                color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
           ),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: primaryColor)
               .copyWith(
                   secondary: secondaryColor, tertiary: Colors.blueGrey[900]),
-          textTheme: const TextTheme(
-              bodyText2: TextStyle(
+          textTheme: const TextTheme().copyWith(
+              headline5: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold),
+              bodyText2: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold))),
