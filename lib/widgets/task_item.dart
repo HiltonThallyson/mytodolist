@@ -83,7 +83,9 @@ class TaskItem extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    DateFormat('MMM, dd').format(_task.date),
+                    DateFormat('MMMM').format(_task.date).length > 4
+                        ? DateFormat('MMM, dd').format(_task.date)
+                        : DateFormat('MMMM, dd').format(_task.date),
                     style: const TextStyle(fontSize: 14),
                   ),
                   Text(_task.date.year.toString(),
