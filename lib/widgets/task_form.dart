@@ -2,12 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:my_todo_app/models/task_model.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/tasks_provider.dart';
 
 class TaskForm extends StatefulWidget {
-  final Function _onSubmit;
-
-  TaskForm(this._onSubmit);
-
   @override
   State<TaskForm> createState() => _TaskFormState();
 }
@@ -28,7 +27,7 @@ class _TaskFormState extends State<TaskForm> {
         title: _formData['title'],
         priority: _formData['priority']);
 
-    widget._onSubmit(newTask);
+    Provider.of<Tasks>(context, listen: false).addTaskToMap(newTask);
     Navigator.of(context).pop(context);
   }
 
