@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/tasks_provider.dart';
 import '../widgets/tasks_list.dart';
 import '../widgets/main_drawer.dart';
 import '../widgets/task_form.dart';

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_todo_app/models/task_model.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class TaskForm extends StatefulWidget {
 class _TaskFormState extends State<TaskForm> {
   final _formKey = GlobalKey<FormState>();
   final _formData = <String, dynamic>{};
+  var _pickedDate = DateTime.now();
 
   String? _priority = 'Medium';
 
@@ -22,10 +24,12 @@ class _TaskFormState extends State<TaskForm> {
   _submitTask() {
     _formData['title'] = _titleController.text;
     _formData['priority'] = _priority;
+
     final newTask = Task(
         id: Random().nextDouble().toString(),
         title: _formData['title'],
-        priority: _formData['priority']);
+        priority: _formData['priority'],
+        date: _pickedDate);
 
     Provider.of<Tasks>(context, listen: false).addTaskToMap(newTask);
     Navigator.of(context).pop(context);
@@ -59,6 +63,30 @@ class _TaskFormState extends State<TaskForm> {
                         _priority = value;
                       });
                     }),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime.utc(2050),
+                          ).then((pickedDate) {
+                            setState(() {
+                              _pickedDate = pickedDate ?? DateTime.now();
+                            });
+                          });
+                        },
+                        child: const Text('Choose date')),
+                    Text(
+                      DateFormat('EEE, d/M,y').format(_pickedDate),
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 14),
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 30,
                 ),

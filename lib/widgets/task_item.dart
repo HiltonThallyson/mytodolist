@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../models/task_model.dart';
@@ -71,6 +72,23 @@ class TaskItem extends StatelessWidget {
               child: Text(
                 _task.title,
                 style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+            trailing: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Theme.of(context).colorScheme.secondary),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  Text(
+                    DateFormat('MMM, dd').format(_task.date),
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                  Text(_task.date.year.toString(),
+                      style: const TextStyle(fontSize: 12))
+                ],
               ),
             ),
           ),
