@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
           title: 'TODO list',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+              fontFamily: 'Lato',
               drawerTheme:
                   const DrawerThemeData(backgroundColor: secondaryColor),
               scaffoldBackgroundColor: primaryColor,
@@ -38,6 +39,10 @@ class MyApp extends StatelessWidget {
                       tertiary: Colors.blueGrey[900]),
               textTheme: const TextTheme().copyWith(
                   headline5: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold),
+                  headline6: const TextStyle(
                       color: Colors.white,
                       fontSize: 26,
                       fontWeight: FontWeight.bold),

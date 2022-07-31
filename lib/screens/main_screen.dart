@@ -8,7 +8,9 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Tasks')),
+      appBar: AppBar(
+        title: Text('My Tasks', style: Theme.of(context).textTheme.headline6),
+      ),
       drawer: MainDrawer(),
       body: Container(
         alignment: Alignment.topLeft,
