@@ -9,7 +9,9 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Tasks', style: Theme.of(context).textTheme.headline6),
+        title: const Text(
+          'My Tasks',
+        ),
       ),
       drawer: MainDrawer(),
       body: Container(

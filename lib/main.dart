@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/tasks_provider.dart';
+import '../screens/completed_tasks_screen.dart';
 import './screens/main_screen.dart';
+
+import '../utils/routes.dart';
+import '../providers/tasks_provider.dart';
 import './themes/colors.dart';
 
 void main() {
@@ -42,15 +45,15 @@ class MyApp extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 26,
                       fontWeight: FontWeight.bold),
-                  headline6: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold),
                   bodyText2: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold))),
-          home: MainScreen(),
+          initialRoute: AppRoutes.home,
+          routes: {
+            AppRoutes.home: ((context) => MainScreen()),
+            AppRoutes.completedTasks: (context) => CompletedTasksScreen(),
+          },
         ));
   }
 }
