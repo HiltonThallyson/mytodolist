@@ -14,6 +14,22 @@ class TaskItem extends StatelessWidget {
     final tasks = Provider.of<Tasks>(context);
     return Dismissible(
       key: ValueKey(tasks.tasks.keys.firstWhere((key) => key == _task.id)),
+      confirmDismiss: (_) async {
+        return await showDialog<bool>(
+            context: context,
+            builder: (ctx) => AlertDialog(
+                  title: const Text('Are you sure?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('No'),
+                    ),
+                    TextButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: const Text('Yes')),
+                  ],
+                ));
+      },
       secondaryBackground: Container(
           alignment: Alignment.centerRight,
           decoration: BoxDecoration(
